@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content ">
+          <div class="row">
+              <div class="col s5 white-text">
+                <form #userForm="ngForm" novalidate>
+                    <input type="hidden" name="_id" ngModel>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input type="text" name="customerid" placeholder="Enter customerid" required ngModel>
+                          <label>CustomerId :
+                            <label class="red-text">*</label>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input type="text" name="name" ngModel placeholder="Enter the full name" required>
+                        <label>Name :
+                          <label class="red-text">*</label>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input type="text" name="gender" ngModel placeholder="Enter the gender">
+                        <label>Gender :</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input type="text" name="email" ngModel placeholder="Enter the email">
+                        <label>Email :</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input type="text" name="mobileno" ngModel placeholder="Enter the mobileno">
+                        <label>MobileNo :</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <button class="btn btn-custom right" type="button" (click)="resetForm(userForm)">Reset</button>
+                        <button class="btn btn-custom right" type="submit" (click)="onSubmit(userForm.value)">Submit</button>
+                      </div>
+                    </div>
+                </form>                
+              </div>
+              
+              <div class="col s7">                  
+                <table class="responsive-table highlight">
+                    <thead>
+                      <tr>
+                        <th>CustomerId</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>MobileNo</th>
+                      </tr>
+                    </thead>
+                    <tr *ngFor="let customer of usersList">
+                        <td>{{customer.customerid}}</td>                        
+                        <td>{{customer.name}}</td>
+                        <td>{{customer.gender}}</td>
+                        <td>{{customer.email}}</td>
+                        <td>{{customer.mobileno}}</td>
+                        <td>
+                            <a class="action-btn" (click)="onEdit(customer)" href="">
+                            <i class="material-icons">edit</i>
+                            </a>
+                            <a class="action-btn" (click)="onDelete(customer._id,userForm)" href="">
+                            <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                  </table>
+              </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
